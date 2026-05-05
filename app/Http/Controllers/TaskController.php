@@ -9,13 +9,13 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = auth()->user()->tasks()->latest()->get();
+        $tasks = Task::latest()->get();
         return view('tasks.index', compact('tasks'));
     }
 
     public function store(Request $request)
     {
-        auth()->user()->tasks()->create([
+        Task::create([
             'title' => $request->title
         ]);
 
